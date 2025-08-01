@@ -13,3 +13,5 @@
 !waybar/**/*
 !wofi/**/*
 !hypr/**/*
+!swaync/**/*
+!kitty/**/*
