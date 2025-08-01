@@ -1,0 +1,12 @@
+{
+  "bluetooth": {
+    "format": " {status}",
+    "format-on": " ",
+    "format-no-controller": "󰂲",
+    "format-connected": " ",
+    "tooltip-format": "{controller_alias}\t{controller_address}",
+    "tooltip-format-connected": "{device_enumerate}",
+    "tooltip-format-enumerate-connected": "󰾰 {device_alias}\t󰁹 {device_battery_percentage}%",
+    "on-click": "kitty --title=bluetooth-manager blueman-manager"
+  }
+}

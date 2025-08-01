@@ -1,0 +1,15 @@
+{
+	"battery": {
+	"bat": "BAT0",
+	"interval": 3,
+	"states": {
+		"full": 90,
+		"warning": 40,
+		"critical": 15
+	},
+	"format": "{capacity}% {icon}",
+	"format-charging": "{capacity}% 󰂄 Plugged",
+	"format-icons": ["󰁻", "󰁽", "󰁿", "󰂀", "󰁹"],
+	"max-length": 25
+	}
+}

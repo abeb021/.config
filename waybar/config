@@ -1,0 +1,36 @@
+{
+  "include": [
+    "~/.config/waybar/modules/clock.jsonc",
+    "~/.config/waybar/modules/tray.jsonc",
+    "~/.config/waybar/modules/hardware.jsonc",
+    "~/.config/waybar/modules/pulseaudio.jsonc",
+    "~/.config/waybar/modules/workspaces.jsonc",
+    "~/.config/waybar/modules/bluetooth.jsonc",
+    "~/.config/waybar/modules/wifi.jsonc",
+    "~/.config/waybar/modules/window.jsonc",
+    "~/.config/waybar/modules/language.jsonc",
+    "~/.config/waybar/modules/media.jsonc",
+    "~/.config/waybar/modules/notify.jsonc",
+    "~/.config/waybar/modules/backlight.jsonc",
+    "~/.config/waybar/modules/battery.jsonc"
+  ],
+  "modules-left": [
+    "hyprland/workspaces",
+    "tray",
+    "mpris"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "hyprland/language",
+    "group/hardware",
+    "clock",
+    "custom/notification",
+    "pulseaudio",
+    "backlight",
+    "custom/wifi",
+    "bluetooth",
+    "battery"
+  ]
+}

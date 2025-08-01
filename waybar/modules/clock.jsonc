@@ -1,0 +1,12 @@
+{
+  "clock": {
+    "interval": 1,
+    "actions": {
+      "on-click-right": "tz_up"
+    },
+    "on-click": "ghostty --title='calendar' -e calcurse",
+    "format": "  {:%H:%M (%Z)}",
+    "tooltip-format": "{tz_list}\n  {:%d.%m.%y %B}",
+    "timezones": ["Europe/Moscow", "Australia/Melbourne"]
+  }
+}

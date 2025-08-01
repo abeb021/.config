@@ -1,0 +1,37 @@
+{
+  "group/hardware": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 200,
+      "children-class": "hardware-child",
+      "transition-left-to-right": true
+    },
+    "modules": ["memory", "cpu"]
+  },
+  "cpu": {
+    "interval": 1,
+    "format": " {usage}%",
+    "states": {
+      "20": 20,
+      "40": 40,
+      "60": 60,
+      "80": 85,
+      "100": 95
+    },
+    "tooltip-format": "CPU: {usage}%",
+    "on-click": "ghostty --title='task-monitor' -e btop"
+  },
+  "memory": {
+    "interval": 1,
+    "format": " {percentage}%",
+    "states": {
+      "20": 20,
+      "40": 40,
+      "60": 60,
+      "80": 85,
+      "100": 95
+    },
+    "tooltip-format": "{used}/{total}G",
+    "on-click": "ghostty --title='task-monitor' -e btop"
+  }
+}

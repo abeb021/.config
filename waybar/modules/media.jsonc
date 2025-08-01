@@ -1,0 +1,18 @@
+{
+  "mpris": {
+    "format": "{status_icon}  {dynamic}",
+    "format-paused": "{status_icon}  {dynamic}",
+    "status-icons": {
+      "playing": "",
+      "paused": "",
+      "stopped": ""
+    },
+    "dynamic-order": ["artist", "title"],
+    "dynamic-len": 32,
+    "ellipsis": "…",
+    "dynamic-importance-order": ["title", "artist"],
+    "dynamic-separator": " — ",
+    "artist-len": 20,
+    "title-len": 25
+  }
+}

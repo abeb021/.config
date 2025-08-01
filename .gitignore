@@ -1,0 +1,15 @@
+# Ignore all files
+*
+
+# But include specific files/folders
+!.gitignore
+!waybar/
+!wofi/
+!hypr/
+!swaync/
+!kitty/
+
+# Include files inside ignored directories
+!waybar/**/*
+!wofi/**/*
+!hypr/**/*

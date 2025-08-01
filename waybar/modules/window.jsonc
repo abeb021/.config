@@ -1,0 +1,7 @@
+{
+  "hyprland/window": {
+    "format": "{}",
+    "separate-outputs": true,
+    "max-length": 32
+  }
+}

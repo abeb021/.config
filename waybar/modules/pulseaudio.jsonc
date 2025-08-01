@@ -1,0 +1,12 @@
+{
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": ["", "", ""],
+      "muted": ""
+    },
+    "scroll-step": 5,
+    "on-click": "ghostty --title='audio-mixer' -e pulsemixer",
+    "tooltip-format": "{desc} ({latency}ms)"
+  }
+}
