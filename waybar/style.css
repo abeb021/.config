@@ -134,7 +134,7 @@
 }
 
 /* MPRIS */
-#mpris {
+/*#mpris {
   min-width: 250px;
   border-radius: 6px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -150,7 +150,7 @@
   background: linear-gradient(45deg, alpha(@lavender, 0.85), alpha(@mauve, 0.85), alpha(@pink, 0.85), alpha(@sapphire, 0.85), alpha(@sky, 0.85), alpha(@blue, 0.85), alpha(@mauve, 0.85), alpha(@lavender, 0.85));
   background-size: 200% 200%;
   animation: background-rainbow 3s linear infinite;
-}
+}*/
 
 @keyframes background-rainbow {
   0% { background-position: 0% 50%; }
