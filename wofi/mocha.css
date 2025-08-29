@@ -1,5 +1,5 @@
 window {
-  background-color: #0a0a0a; /* bg-primary */
+  background-color: #1e1e2e; /* Base */
   padding: 30px;
   font-family: "JetBrains Mono", monospace;
   font-weight: bold;
@@ -7,11 +7,11 @@ window {
 
 #input {
   padding: 12px 24px;
-  background-color: #1a1a1a; /* bg-secondary */
+  background-color: #313244; /* Surface 0 */
   border-radius: 12px;
   margin: 20px 15px;
-  color: #e0e0e0; /* text-primary */
-  border: 1px solid #333333; /* border-primary */
+  color: #cdd6f4; /* Text */
+  border: 1px solid #45475a; /* Surface 1 */
   outline: none;
   transition: all 0.2s ease-in-out;
   font-family: inherit;
@@ -19,8 +19,8 @@ window {
 }
 
 #input:focus {
-  border: 1px solid #8b5cf6; /* accent-primary */
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+  border: 1px solid #89b4fa; /* Blue */
+  box-shadow: 0 0 0 2px rgba(137, 180, 250, 0.2);
 }
 
 #input:selected,
@@ -39,7 +39,7 @@ window {
 
 #entry {
   border-radius: 12px;
-  color: #e0e0e0; /* text-primary */
+  color: #cdd6f4; /* Text */
   outline: none;
   padding: 15px 3px;
   transition: all 0.2s ease-in-out;
@@ -53,9 +53,9 @@ window {
 }
 
 #entry:selected {
-  background-color: #252525; /* bg-tertiary */
+  background-color: #45475a; /* Surface 1 */
   outline: none;
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 0 2px rgba(137, 180, 250, 0.2);
 }
 
 #scroll {
