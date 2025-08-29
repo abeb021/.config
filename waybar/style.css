@@ -9,7 +9,7 @@
   background-color: alpha(@base, 0);
   color: @text;
   border: solid alpha(@surface1, 0.8);
-  padding: 0 1px;
+  padding: 0;
 }
 
 #waybar.top {
@@ -17,14 +17,14 @@
 }
 
 .modules-left, .modules-center, .modules-right {
-  margin: 0px 4px;
+  margin: 0;
   background-color: transparent;
 }
 
 .module {
   padding: 0 3px;
-  margin: 0px 1px;
-  border-radius: 3px;
+  margin: 0;
+  border-radius: 0;
   color: @text;
   background-color: @surface0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -65,16 +65,18 @@
 /* Workspaces */
 #workspaces {
   color: @text;
-  padding: 0 6px;
+  padding: 0;
 }
 
 #workspaces button {
   color: @text;
   padding: 2px 6px;
-  margin: 2px;
+  margin: 0;
   border: none;
   background-color: alpha(@surface1, 0.6);
+  border-radius: 3px;
 }
+
 
 #workspaces button:hover {
   background: alpha(@lavender, 0.6);
@@ -130,7 +132,7 @@
 
 #group-hardware {
   padding: 0 3px;
-  border-radius: 3px;
+  border-radius: 0;
 }
 
 /* MPRIS */
@@ -162,7 +164,7 @@
 #custom-notification {
   color: @text;
   padding: 0 6px;
-  border-radius: 6px;
+  border-radius: 0;
   background-color: @surface0;
   transition: all 0.3s ease;
 }
@@ -171,7 +173,7 @@
 #tray {
   color: @text;
   padding: 0 12px;
-  border-radius: 6px;
+  border-radius: 0;
   background-color: @surface0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
