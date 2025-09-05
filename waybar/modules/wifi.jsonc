@@ -1,10 +1,10 @@
 {
   "custom/wifi": {
-    "exec": "/home/abeb/.config/waybar/scripts/wifi.sh",
+    "exec": "/home/archabeb/.config/waybar/scripts/wifi.sh",
     "return-type": "json",
     "interval": 5,
     "format": "{text}",
     "tooltip-format": "{tooltip}",
-    "on-click": "kitty --title=network-manager iwctl"
+    "on-click": "kitty --title=network-manager nmtui"
   }
 } 

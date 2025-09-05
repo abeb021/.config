@@ -30,7 +30,7 @@
     "pulseaudio",
     "backlight",
     "custom/wifi",
-    "bluetooth",
+    //"bluetooth",
     "battery"
   ]
 }

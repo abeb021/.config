@@ -6,7 +6,7 @@
       "muted": ""
     },
     "scroll-step": 5,
-    "on-click": "ghostty --title='audio-mixer' -e pulsemixer",
+    "on-click": "kitty --title='audio-mixer' -e pulsemixer",
     "tooltip-format": "{desc} ({latency}ms)"
   }
 }

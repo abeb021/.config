@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get WiFi interface
-WIFI_INTERFACE="wlan0"
+WIFI_INTERFACE="wlp0s20f3"
 
 # Get WiFi connection info using iwconfig
 WIFI_INFO=$(iwconfig $WIFI_INTERFACE 2>/dev/null)
