@@ -1,6 +1,6 @@
 {
   "custom/wifi": {
-    "exec": "/home/archabeb/.config/waybar/scripts/wifi.sh",
+    "exec": "~/.config/waybar/scripts/wifi.sh",
     "return-type": "json",
     "interval": 5,
     "format": "{text}",
