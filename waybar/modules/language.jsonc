@@ -3,7 +3,6 @@
     "format": " {}",
     "format-en": "EN",
     "format-ru": "RU",
-    "keyboard-name": "gaming-keyboard",
-    "on-click": "hyprctl switchxkblayout gaming-keyboard next"
+    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
   }
 }
