@@ -5,7 +5,8 @@
       "on-click-right": "tz_up"
     },
     "on-click": "kitty --title='calendar' -e calcurse",
-    "format": "  {:%H:%M (%Z)}",
+    //"format": "  {:%H:%M (%Z)}",
+    "format": " {:%H:%M}",
     "tooltip-format": "{tz_list}\n  {:%d.%m.%y %B}",
     "timezones": ["Europe/Moscow", "Australia/Melbourne"]
   }
