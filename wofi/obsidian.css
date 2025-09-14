@@ -8,7 +8,7 @@ window {
 #input {
   padding: 12px 24px;
   background-color: #1a1a1a; /* bg-secondary */
-  border-radius: 12px;
+  border-radius: 1px;
   margin: 20px 15px;
   color: #e0e0e0; /* text-primary */
   border: 1px solid #333333; /* border-primary */
@@ -38,7 +38,7 @@ window {
 }
 
 #entry {
-  border-radius: 12px;
+  border-radius: 1px;
   color: #e0e0e0; /* text-primary */
   outline: none;
   padding: 15px 3px;

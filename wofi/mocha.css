@@ -8,7 +8,7 @@ window {
 #input {
   padding: 12px 24px;
   background-color: #313244; /* Surface 0 */
-  border-radius: 12px;
+  border-radius: 1px;
   margin: 20px 15px;
   color: #cdd6f4; /* Text */
   border: 1px solid #45475a; /* Surface 1 */
@@ -38,7 +38,7 @@ window {
 }
 
 #entry {
-  border-radius: 12px;
+  border-radius: 1px;
   color: #cdd6f4; /* Text */
   outline: none;
   padding: 15px 3px;
