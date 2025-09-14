@@ -6,9 +6,9 @@
 }
 
 #waybar {
-  background-color: alpha(@base, 0);
-  color: @text;
-  border: solid alpha(@surface1, 0.8);
+  background-color: alpha(@bg, 0);
+  color: @fg;
+  border: solid alpha(@surface, 0.8);
   padding: 0;
 }
 
@@ -25,110 +25,109 @@
   padding: 0 3px;
   margin: 0;
   border-radius: 0;
-  color: @text;
-  background-color: @surface0;
+  color: @fg;
+  background-color: @surface;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Common hover effect */
 .module:hover, #clock:hover, #language:hover, #backlight:hover, #battery:hover, #pulseaudio:hover, #window:hover, #tray:hover, #custom-notification:hover {
-  background-color: alpha(@lavender, 0.5);
+  background-color: alpha(@accent-hover, 0.5);
 }
 
 /* Battery full state (90% or below) */
 #battery.full {
-  color: @green;
+  color: @good;
 }
 
 #battery.full:hover {
-  background-color: alpha(@green, 0.3);
+  background-color: alpha(@good, 0.3);
 }
 
 /* Battery warning state (30% or below) */
 #battery.warning {
-  color: @yellow;
+  color: @warning;
 }
 
 #battery.warning:hover {
-  background-color: alpha(@yellow, 0.3);
+  background-color: alpha(@warning, 0.3);
 }
 
 /* Battery critical state (15% or below) */
 #battery.critical {
-  color: @red;
+  color: @critical;
 }
 
 #battery.critical:hover {
-  background-color: alpha(@red, 0.3);
+  background-color: alpha(@critical, 0.3);
 }
 
 /* Workspaces */
 #workspaces {
-  color: @text;
+  color: @fg;
   padding: 0;
 }
 
 #workspaces button {
-  color: @text;
+  color: @fg;
   padding: 2px 6px;
   margin: 0;
   border: none;
-  background-color: alpha(@surface1, 0.6);
+  background-color: alpha(@surface, 0.6);
   border-radius: 3px;
 }
 
-
 #workspaces button:hover {
-  background: alpha(@lavender, 0.6);
-  color: @lavender;
+  background: alpha(@accent-hover, 0.6);
+  color: @accent;
 }
 
 #workspaces button.active {
-  background-color: alpha(@lavender, 0.4);
-  color: @text;
+  background-color: alpha(@accent, 0.4);
+  color: @fg;
 }
 
 #workspaces button.visible {
-  background-color: alpha(@lavender, 0.4);
-  color: alpha(@text, 0.7);
+  background-color: alpha(@accent, 0.4);
+  color: alpha(@fg-sub, 0.7);
 }
 
 #workspaces button.urgent {
-  background-color: alpha(@red, 0.3);
-  color: @maroon;
+  background-color: alpha(@critical, 0.3);
+  color: @critical;
 }
 
 /* Window */
 #window {
-  background-color: @surface0;
+  background-color: @surface;
   padding: 0 12px;
   border-radius: 6px;
 }
 
 /* Bluetooth */
-#bluetooth.on:not(.connected) { color: @yellow; }
-#bluetooth.connected { color: @teal; }
-#bluetooth.no-controller { color: @red; }
-#bluetooth.on:not(.connected):hover { background-color: alpha(@yellow, 0.5); }
-#bluetooth.connected:hover { background-color: alpha(@teal, 0.5); }
-#bluetooth.no-controller:hover { background-color: alpha(@red, 0.5); }
+#bluetooth.on:not(.connected) { color: @warning; }
+#bluetooth.connected { color: @info; }
+#bluetooth.no-controller { color: @critical; }
+#bluetooth.on:not(.connected):hover { background-color: alpha(@warning, 0.5); }
+#bluetooth.connected:hover { background-color: alpha(@info, 0.5); }
+#bluetooth.no-controller:hover { background-color: alpha(@critical, 0.5); }
 
 /* Pulseaudio */
-#pulseaudio.muted { color: @red; }
-#pulseaudio.muted:hover { background-color: alpha(@red, 0.3); }
+#pulseaudio.muted { color: @critical; }
+#pulseaudio.muted:hover { background-color: alpha(@critical, 0.3); }
 
 /* Hardware */
-#memory, #cpu { color: @text; }
-#memory.20, #cpu.20 { color: @green; }
-#memory.40, #cpu.40 { color: @yellow; }
-#memory.60, #cpu.60 { color: @peach; }
-#memory.80, #cpu.80 { color: @maroon; }
-#memory.100, #cpu.100 { color: @red; }
-#memory.20:hover, #cpu.20:hover { background-color: alpha(@green, 0.3); }
-#memory.40:hover, #cpu.40:hover { background-color: alpha(@yellow, 0.3); }
-#memory.60:hover, #cpu.60:hover { background-color: alpha(@peach, 0.3); }
-#memory.80:hover, #cpu.80:hover { background-color: alpha(@maroon, 0.3); }
-#memory.100:hover, #cpu.100:hover { background-color: alpha(@red, 0.3); }
+#memory, #cpu { color: @fg; }
+#memory.20, #cpu.20 { color: @good; }
+#memory.40, #cpu.40 { color: @warning; }
+#memory.60, #cpu.60 { color: @accent; }
+#memory.80, #cpu.80 { color: @critical; }
+#memory.100, #cpu.100 { color: @critical; }
+#memory.20:hover, #cpu.20:hover { background-color: alpha(@good, 0.3); }
+#memory.40:hover, #cpu.40:hover { background-color: alpha(@warning, 0.3); }
+#memory.60:hover, #cpu.60:hover { background-color: alpha(@accent, 0.3); }
+#memory.80:hover, #cpu.80:hover { background-color: alpha(@critical, 0.3); }
+#memory.100:hover, #cpu.100:hover { background-color: alpha(@critical, 0.3); }
 
 #group-hardware {
   padding: 0 3px;
@@ -143,13 +142,13 @@
 }
 
 #mpris.playing {
-  background: linear-gradient(45deg, alpha(@lavender, 0.75), alpha(@mauve, 0.75), alpha(@sapphire, 0.75), alpha(@blue, 0.75), alpha(@mauve, 0.75), alpha(@lavender, 0.75));
+  background: linear-gradient(45deg, alpha(@accent, 0.75), alpha(@accent-hover, 0.75), alpha(@info, 0.75), alpha(@good, 0.75), alpha(@accent-hover, 0.75), alpha(@accent, 0.75));
   background-size: 200% 200%;
   animation: background-rainbow 5s linear infinite;
 }
 
 #mpris.playing:hover {
-  background: linear-gradient(45deg, alpha(@lavender, 0.85), alpha(@mauve, 0.85), alpha(@pink, 0.85), alpha(@sapphire, 0.85), alpha(@sky, 0.85), alpha(@blue, 0.85), alpha(@mauve, 0.85), alpha(@lavender, 0.85));
+  background: linear-gradient(45deg, alpha(@accent, 0.85), alpha(@accent-hover, 0.85), alpha(@info, 0.85), alpha(@good, 0.85), alpha(@accent-hover, 0.85), alpha(@accent, 0.85));
   background-size: 200% 200%;
   animation: background-rainbow 3s linear infinite;
 }*/
@@ -162,57 +161,57 @@
 
 /* Notification */
 #custom-notification {
-  color: @text;
+  color: @fg;
   padding: 0 6px;
   border-radius: 0;
-  background-color: @surface0;
+  background-color: @surface;
   transition: all 0.3s ease;
 }
 
 /* Tray */
 #tray {
-  color: @text;
+  color: @fg;
   padding: 0 12px;
   border-radius: 0;
-  background-color: @surface0;
+  background-color: @surface;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #tray menu {
-  background-color: @surface0;
+  background-color: @surface;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 8px 0;
   min-width: 200px;
-  border: 1px solid alpha(@base, 0.9);
-  outline: 1px solid alpha(@base, 0.9);
+  border: 1px solid alpha(@bg, 0.9);
+  outline: 1px solid alpha(@bg, 0.9);
 }
 
 #tray menu menuitem {
   padding: 8px 16px;
-  color: @text;
+  color: @fg;
   transition: background-color 0.2s ease;
-  border-bottom: 1px solid alpha(@base, 0.3);
+  border-bottom: 1px solid alpha(@bg, 0.3);
 }
 
 #tray menu menuitem:last-child { border-bottom: none; }
 #tray menu menuitem:hover {
-  background-color: alpha(@lavender, 0.2);
-  color: @lavender;
+  background-color: alpha(@accent-hover, 0.2);
+  color: @accent;
 }
 
 #tray menu separator {
-  background-color: alpha(@overlay0, 0.2);
+  background-color: alpha(@fg-sub, 0.2);
   margin: 4px 0;
-  border-top: 1px solid alpha(@mantle, 0.3);
+  border-top: 1px solid alpha(@bg, 0.3);
 }
 
 /* Tooltip */
 tooltip {
   border-radius: 12px;
-  background-color: alpha(@mantle, 0.9);
-  border: 2px solid alpha(@base, 0.9);
+  background-color: alpha(@bg, 0.9);
+  border: 2px solid alpha(@bg, 0.9);
   padding: 10px;
-  box-shadow: 0 4px 12px alpha(@base, 0.2);
+  box-shadow: 0 4px 12px alpha(@bg, 0.2);
   font-size: 12px;
 }

@@ -1,26 +1,12 @@
-@define-color rosewater #dc8a78;
-@define-color flamingo #d98484;
-@define-color pink #c678dd;
-@define-color mauve #9869db;
-@define-color red #e06c75;
-@define-color maroon #be5046;
-@define-color peach #d19a66;
-@define-color yellow #e5c07b;
-@define-color green #98c379;
-@define-color teal #56b6c2;
-@define-color sky #61afef;
-@define-color sapphire #3b8eea;
-@define-color blue #61afef;
-@define-color lavender #8599ed;
-@define-color text #dcdcdc;
-@define-color subtext1 #b4b4b4;
-@define-color subtext0 #969696;
-@define-color overlay2 #828282;
-@define-color overlay1 #6e6e6e;
-@define-color overlay0 #5a5a5a;
-@define-color surface2 #464646;
-@define-color surface1 #323232;
-@define-color surface0 #282828;
-@define-color base #1e1e1e;
-@define-color mantle #191919;
-@define-color crust #141414;
+@define-color accent #8f9cf0;       /* Main accent (calm indigo/blue) */
+@define-color accent-hover #a5b4fc; /* Lighter accent on hover */
+@define-color critical #ff6b6b;     /* Error/critical (soft red) */
+@define-color warning #f2c97d;      /* Warning (amber) */
+@define-color info #5db7f5;         /* Info/blue */
+@define-color good #7bc379;         /* Success/green */
+
+@define-color fg #d4d4d4;           /* Default text (slightly softer than pure white) */
+@define-color fg-sub #9ca3af;       /* Subtext (muted gray) */
+@define-color bg #1b1b1f;           /* Base background (deep obsidian black/gray) */
+@define-color surface #23232a;      /* Module background */
+@define-color surface-hover #2e2e36;/* Module hover */
