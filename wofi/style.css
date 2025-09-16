@@ -1,5 +1,7 @@
+@import "wofi-colors.css";
+
 window {
-  background-color: #0a0a0a; /* bg-primary */
+  background-color: @bg-primary;
   padding: 30px;
   font-family: "JetBrains Mono", monospace;
   font-weight: bold;
@@ -7,11 +9,11 @@ window {
 
 #input {
   padding: 12px 24px;
-  background-color: #1a1a1a; /* bg-secondary */
+  background-color: @bg-secondary;
   border-radius: 1px;
   margin: 20px 15px;
-  color: #e0e0e0; /* text-primary */
-  border: 1px solid #333333; /* border-primary */
+  color: @text-primary;
+  border: 1px solid @border-primary;
   outline: none;
   transition: all 0.2s ease-in-out;
   font-family: inherit;
@@ -19,8 +21,8 @@ window {
 }
 
 #input:focus {
-  border: 1px solid #8b5cf6; /* accent-primary */
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+  border: 1px solid @accent-primary;
+  box-shadow: 0 0 0 2px @accent-shadow;
 }
 
 #input:selected,
@@ -39,7 +41,7 @@ window {
 
 #entry {
   border-radius: 1px;
-  color: #e0e0e0; /* text-primary */
+  color: @text-primary;
   outline: none;
   padding: 15px 3px;
   transition: all 0.2s ease-in-out;
@@ -53,9 +55,10 @@ window {
 }
 
 #entry:selected {
-  background-color: #252525; /* bg-tertiary */
+  background-color: @bg-tertiary;
+  border: 1px solid;
   outline: none;
-  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 0 0 2px @accent-shadow;
 }
 
 #scroll {

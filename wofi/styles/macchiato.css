@@ -1,0 +1,10 @@
+@define-color bg-primary     #24273a;
+@define-color bg-secondary   #363a4f;
+@define-color bg-tertiary    #494d64;
+
+@define-color text-primary   #cad3f5;
+
+@define-color border-primary #494d64;
+
+@define-color accent-primary #8aadf4;
+@define-color accent-shadow rgba(138, 173, 244, 0.2);
