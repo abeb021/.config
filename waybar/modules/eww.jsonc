@@ -1,0 +1,10 @@
+{
+	"custom/eww": {
+		"format": "",
+		"tooltip": "Open widgets (left click: super, middle: control, right: close all)",
+		"on-click": "/home/abeb-arch/.config/eww/scripts/toggle_super.sh",
+		"on-click-middle": "/home/abeb-arch/.config/eww/scripts/toggle_control.sh",
+		"on-click-right": "/home/abeb-arch/.config/eww/scripts/toggle_close_all.sh",
+		"interval": 0
+	}
+}

@@ -1,4 +1,4 @@
-@import "wofi-colors.css";
+@import ".config/wofi/styles/obsidian.css";
 
 window {
   background-color: @bg-primary;

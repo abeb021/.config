@@ -12,7 +12,8 @@
     "~/.config/waybar/modules/media.jsonc",
     "~/.config/waybar/modules/notify.jsonc",
     "~/.config/waybar/modules/backlight.jsonc",
-    "~/.config/waybar/modules/battery.jsonc"
+    "~/.config/waybar/modules/battery.jsonc",
+    "~/.config/waybar/modules/eww.jsonc"
   ],
   "modules-left": [
     "hyprland/workspaces",
@@ -31,6 +32,7 @@
     "backlight",
     "custom/wifi",
     //"bluetooth",
+    "custom/eww",
     "battery"
   ]
 }
