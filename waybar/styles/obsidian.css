@@ -1,4 +1,5 @@
-@define-color accent #8f9cf0;       /* Main accent (calm indigo/blue) */
+@define-color accent #8b5cf6;       /* Main accent (calm indigo/blue) */
+
 @define-color accent-hover #a5b4fc; /* Lighter accent on hover */
 @define-color critical #ff6b6b;     /* Error/critical (soft red) */
 @define-color warning #f2c97d;      /* Warning (amber) */
