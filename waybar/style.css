@@ -33,7 +33,7 @@
 /* Common hover effect */
 .module:hover, #clock:hover, #language:hover, #backlight:hover, #battery:hover, #pulseaudio:hover, #window:hover, #tray:hover, #custom-notification:hover {
   background-color: alpha(@accent-hover, 0.5);
-  border: 2px solid @accent;
+  box-shadow: inset 0 0 0 2px @accent;
 }
 
 /* Battery full state (90% or below) */
