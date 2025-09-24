@@ -9,5 +9,5 @@
 @define-color fg #d4d4d4;           /* Default text (slightly softer than pure white) */
 @define-color fg-sub #9ca3af;       /* Subtext (muted gray) */
 @define-color bg #1b1b1f;           /* Base background (deep obsidian black/gray) */
-@define-color surface #23232a;      /* Module background */
+@define-color surface #252525;      /* Module background */
 @define-color surface-hover #2e2e36;/* Module hover */

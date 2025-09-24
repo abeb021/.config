@@ -58,7 +58,6 @@ window {
   background-color: @bg-tertiary;
   border: 1px solid @accent-primary ;
   outline: none;
-  box-shadow: 0 0 0 2px @accent-shadow;
 }
 
 #scroll {
