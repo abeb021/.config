@@ -6,7 +6,7 @@
 .bar{
   box-shadow: 0 2px 3px 1px rgba(6,6,11,0.9);
   border-radius: 10px;
-  background-color: rgba(24,24,37,0.94);
+  background-color: rgba(24,24,37,1.0);
   padding: 5px;
   margin:6.5px;
 }
@@ -42,6 +42,7 @@
   font-family: "JetBrainsMono Nerd Font";
   font-size: 16px;
   color: #cdd6f4;
+  padding: 0;
 }
 
 .div{
@@ -57,6 +58,38 @@
     opacity:1;
   }
 }
+
+/* Workspace button styles matching Waybar */
+/*
+.ws eventbox {
+  color: #cdd6f4;
+  padding: 2px 6px;
+  margin: 0;
+  border: none;
+  background-color: rgba(30, 30, 46, 0.6);
+  border-radius: 3px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ws eventbox:hover {
+  background: rgba(203, 166, 247, 0.6);
+  color: #cba6f7;
+}
+
+.ws eventbox.active {
+  background-color: rgba(203, 166, 247, 0.4);
+  color: #cdd6f4;
+}
+
+.ws eventbox.occupied {
+  background-color: rgba(203, 166, 247, 0.4);
+  color: rgba(205, 212, 246, 0.7);
+}
+
+.ws eventbox.urgent {
+  background-color: rgba(243, 139, 168, 0.3);
+  color: #f38ba8;
+}*/
 
 .time-label{
   background-color:rgba(0,0,0,0.38);
@@ -353,7 +386,7 @@ menu {
 
 .pfp{
   box-shadow: 0 2px 3px 2px rgba(6,6,11,0.9);
-  background-image: url('./Monasm.jpg');
+  background-image: url('./avatar_hyprlock.gif');
   background-size: 90px;
   background-position: 50% 35%;
   background-repeat:no-repeat;

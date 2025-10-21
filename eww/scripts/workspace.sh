@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ws() {
-    local workspaces=6
+    local workspaces=10
     local workspace_icon=()
     local workspace_class=()
     local output=""
@@ -33,8 +33,8 @@ ws() {
     /usr/bin/eww update workspaces-output="$output"
 }
 
-HYPRLAND_SIGNATURE_ACTUAL=$(ls -td /run/user/1000/hypr/*/ | head -n1 | xargs basename)
-SOCKET="/run/user/1000/hypr/${HYPRLAND_SIGNATURE_ACTUAL}/.socket2.sock"
+HYPRLAND_SIGNATURE_ACTUAL=$(ls -td /run/user/1001/hypr/*/ | head -n1 | xargs basename)
+SOCKET="/run/user/1001/hypr/${HYPRLAND_SIGNATURE_ACTUAL}/.socket2.sock"
 
 stdbuf -oL socat -U - UNIX-CONNECT:"$SOCKET" | while read -r line; do
     case $line in

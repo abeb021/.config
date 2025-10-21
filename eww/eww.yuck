@@ -305,7 +305,7 @@
     (button-module :class "menu"
                    :subclass "menu-eventbox"
                    :icon " "
-                   :cmd "~/.config/eww/scripts/menuctl.sh"
+                   :cmd "./scripts/menuctl.sh"
     )
 )
 
@@ -391,7 +391,7 @@
     (literal :content workspaces-output)
 )
 
-(defvar workspaces-output "(box :class \"ws\" :halign \"end\" :orientation \"h\" :spacing 5 :space-evenly \"false\" (eventbox :onclick \"hyprctl dispatch workspace 1\" :cursor \"pointer\" :class \"visiting\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 2\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 3\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 4\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 5\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 6\" :cursor \"pointer\" :class \"free\" (label :text \" \")))")
+(defvar workspaces-output "(box :class \"ws\" :halign \"start\" :orientation \"h\" :spacing 3 :space-evenly \"false\" (eventbox :onclick \"hyprctl dispatch workspace 1\" :cursor \"pointer\" :class \"visiting\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 2\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 3\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 4\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 5\" :cursor \"pointer\" :class \"free\" (label :text \" \")) (eventbox :onclick \"hyprctl dispatch workspace 6\" :cursor \"pointer\" :class \"free\" (label :text \" \")))")
 
 (defwidget divider []
     (label :class "div" :text "|")
@@ -417,7 +417,7 @@
 (defvar calrev false)
 
 (defwidget calendar_event []
-    (eventbox :onhoverlost "./scripts/calendar.sh"
+         (eventbox :onhoverlost "./scripts/calendar.sh"
          (calendar_widget :time get_time
                           :date get_date
          )
@@ -670,7 +670,7 @@
                                          :max 101 
                                          :min 0
                                          :round-digits 0
-                                         :onchange "pamixer --set-volume {}"
+                                         :onchange "pactl set-sink-volume @DEFAULT_SINK@ {}%"
                                   )
                              )
                              (box :class "light-slider"
@@ -808,6 +808,6 @@
                         :width "99.5%"
                         :height "3.425%"
     )
-    :exclusive true
+        :exclusive true
     (bar)
 )
