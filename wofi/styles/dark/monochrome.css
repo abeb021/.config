@@ -1,0 +1,10 @@
+@define-color bg-primary     #0a0a0a;
+@define-color bg-secondary   #1a1a1a;
+@define-color bg-tertiary    #252525;
+
+@define-color text-primary   #e0e0e0;
+
+@define-color border-primary #333333;
+
+@define-color accent-primary #94a3b8;    /* Cool gray */
+@define-color accent-shadow rgba(148, 163, 184, 0.2);

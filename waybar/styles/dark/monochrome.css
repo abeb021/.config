@@ -1,0 +1,12 @@
+@define-color accent #94a3b8;       /* Cool gray */
+@define-color accent-hover #cbd5e1; /* Lighter gray */
+@define-color critical #ef4444;     /* Error/critical (kept red for visibility) */
+@define-color warning #eab308;      /* Warning (kept yellow for visibility) */
+@define-color info #6b7280;         /* Info/gray */
+@define-color good #22c55e;         /* Success (kept green for visibility) */
+
+@define-color fg #d4d4d4;           /* Default text */
+@define-color fg-sub #9ca3af;       /* Subtext */
+@define-color bg #1b1b1f;           /* Base background */
+@define-color surface #252525;      /* Module background */
+@define-color surface-hover #2e2e36;/* Module hover */

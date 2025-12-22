@@ -1,0 +1,12 @@
+@define-color accent #f97316;       /* Orange */
+@define-color accent-hover #fb923c; /* Lighter orange */
+@define-color critical #ef4444;     /* Error/critical (red) */
+@define-color warning #f59e0b;      /* Warning (golden amber) */
+@define-color info #0ea5e9;         /* Info/blue */
+@define-color good #22c55e;         /* Success/green */
+
+@define-color fg #d4d4d4;           /* Default text */
+@define-color fg-sub #9ca3af;       /* Subtext */
+@define-color bg #1b1b1f;           /* Base background */
+@define-color surface #252525;      /* Module background */
+@define-color surface-hover #2e2e36;/* Module hover */
