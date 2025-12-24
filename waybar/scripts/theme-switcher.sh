@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Theme Switcher Script
-# Changes themes for: waybar, wofi, kitty, hyprland, hyprlock
+# Changes themes for: waybar, wofi, kitty, hyprland, hyprlock, hyprpaper
 
 CONFIG_DIR="$HOME/.config"
 THEME_CATEGORY="dark"  # or "white" for light themes
@@ -70,6 +70,66 @@ update_hyprlock() {
     fi
 }
 
+# Function to update hyprpaper wallpaper
+update_hyprpaper() {
+    local hyprpaper_conf="$CONFIG_DIR/hypr/hyprpaper.conf"
+    local wallpaper_dir="$CONFIG_DIR/hypr/assets/wallpapers"
+    local wallpaper_path_full=""
+    local wallpaper_path_tilde=""
+    local wallpaper_ext=""
+    
+    if [ -f "$hyprpaper_conf" ]; then
+        # Check for wallpaper with common image extensions
+        # Try most common formats first: jpg, png, jpeg, webp, bmp, etc.
+        for ext in jpg png jpeg webp bmp gif tiff tif; do
+            local test_path="$wallpaper_dir/$THEME_NAME.$ext"
+            if [ -f "$test_path" ]; then
+                wallpaper_path_full="$test_path"
+                wallpaper_ext="$ext"
+                break
+            fi
+        done
+        
+        # If still not found, try to find any file with the theme name (case-insensitive)
+        if [ -z "$wallpaper_path_full" ]; then
+            local found_file=$(find "$wallpaper_dir" -maxdepth 1 -iname "$THEME_NAME.*" -type f | head -n 1)
+            if [ -n "$found_file" ]; then
+                wallpaper_path_full="$found_file"
+                wallpaper_ext="${found_file##*.}"
+            fi
+        fi
+        
+        # If no wallpaper found, warn and return
+        if [ -z "$wallpaper_path_full" ]; then
+            echo "⚠ Warning: Wallpaper not found for theme: $THEME_NAME"
+            return
+        fi
+        
+        # Convert to tilde format
+        wallpaper_path_tilde="~/.config/hypr/assets/wallpapers/$THEME_NAME.$wallpaper_ext"
+        
+        # Update preload line (use ~ format for consistency)
+        sed -i "s|^preload = .*|preload = $wallpaper_path_tilde|" "$hyprpaper_conf"
+        
+        # Update wallpaper line (preserve monitor name, update path)
+        # Extract monitor name from existing config
+        local monitor_name=$(grep "^wallpaper = " "$hyprpaper_conf" | sed 's/^wallpaper = \([^,]*\),.*/\1/')
+        if [ -z "$monitor_name" ]; then
+            # Fallback to eDP-1 if not found
+            monitor_name="eDP-1"
+        fi
+        
+        # Update wallpaper line with preserved monitor name (use ~ format)
+        sed -i "s|^wallpaper = .*|wallpaper = $monitor_name,$wallpaper_path_tilde|" "$hyprpaper_conf"
+        
+        echo "✓ Updated hyprpaper wallpaper to $THEME_NAME ($wallpaper_ext)"
+        
+        # Reload hyprpaper
+        killall hyprpaper 2>/dev/null
+        hyprpaper --config "$hyprpaper_conf" &
+    fi
+}
+
 # Main execution
 main() {
     echo "Switching theme to: $THEME_NAME"
@@ -80,6 +140,7 @@ main() {
     update_kitty
     update_hyprland
     update_hyprlock
+    update_hyprpaper
     
     echo "-----------------------------------"
     echo "Theme switch complete!"
