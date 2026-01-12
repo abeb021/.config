@@ -92,9 +92,9 @@ show_menu() {
         # Reload hyprland
         hyprctl reload 2>/dev/null
         
-        # Send notification
-        local display_name=$(format_theme_name "$selected_theme")
-        notify-send "Theme Changed" "Switched to $display_name" -t 2000
+        # # Send notification
+        # local display_name=$(format_theme_name "$selected_theme")
+        # notify-send "Theme Changed" "Switched to $display_name" -t 2000
     fi
 }
 
