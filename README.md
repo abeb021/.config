@@ -4,7 +4,7 @@
 
 <br>
 
-# Hyprland Dotfiles
+# Dotfiles
 ## Just got some dotfiles from programming community chat in telegram and remade them!
 
 </div>
