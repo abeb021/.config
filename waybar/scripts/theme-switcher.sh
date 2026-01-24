@@ -80,7 +80,6 @@ update_hyprpaper() {
     
     if [ -f "$hyprpaper_conf" ]; then
         # Check for wallpaper with common image extensions
-        # Try most common formats first: jpg, png, jpeg, webp, bmp, etc.
         for ext in jpg png jpeg webp bmp gif tiff tif; do
             local test_path="$wallpaper_dir/$THEME_NAME.$ext"
             if [ -f "$test_path" ]; then
@@ -108,19 +107,25 @@ update_hyprpaper() {
         # Convert to tilde format
         wallpaper_path_tilde="~/.config/hypr/assets/wallpapers/$THEME_NAME.$wallpaper_ext"
         
-        # Update preload line (use ~ format for consistency)
+        # Backup original file
+        cp "$hyprpaper_conf" "${hyprpaper_conf}.bak"
+        
+        # Update preload line (simple sed)
         sed -i "s|^preload = .*|preload = $wallpaper_path_tilde|" "$hyprpaper_conf"
         
-        # Update wallpaper line (preserve monitor name, update path)
-        # Extract monitor name from existing config
-        local monitor_name=$(grep "^wallpaper = " "$hyprpaper_conf" | sed 's/^wallpaper = \([^,]*\),.*/\1/')
-        if [ -z "$monitor_name" ]; then
-            # Fallback to eDP-1 if not found
-            monitor_name="eDP-1"
-        fi
+        # Update wallpaper block using sed with range address
+        # sed pattern: /^wallpaper *{/,/^}/ finds the wallpaper block
+        # Within that block, update the path line
+        sed -i "/^wallpaper *{/,/^}/{
+            s|^[[:space:]]*path[[:space:]]*=.*|    path = $wallpaper_path_tilde|
+        }" "$hyprpaper_conf"
         
-        # Update wallpaper line with preserved monitor name (use ~ format)
-        sed -i "s|^wallpaper = .*|wallpaper = $monitor_name,$wallpaper_path_tilde|" "$hyprpaper_conf"
+        # If there are multiple monitor lines, update them to maintain consistency
+        # This keeps the existing monitor name but updates the path
+        sed -i "/^wallpaper *{/,/^}/{
+            /^[[:space:]]*monitor[[:space:]]*=/!b
+            s|^\([[:space:]]*monitor[[:space:]]*=[[:space:]]*\).*|\1eDP-1|
+        }" "$hyprpaper_conf"
         
         echo "✓ Updated hyprpaper wallpaper to $THEME_NAME ($wallpaper_ext)"
         

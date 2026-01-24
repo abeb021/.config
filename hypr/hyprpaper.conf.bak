@@ -1,0 +1,6 @@
+preload = ~/.config/hypr/assets/wallpapers/emerald.jpg
+wallpaper {
+    monitor = eDP-1
+    path = ~/.config/hypr/assets/wallpapers/emerald.jpg
+}
+ splash = false
