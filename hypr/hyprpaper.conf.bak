@@ -1,6 +1,7 @@
-preload = ~/.config/hypr/assets/wallpapers/emerald.jpg
+preload = ~/.config/hypr/assets/wallpapers/obsidian.png
 wallpaper {
     monitor = eDP-1
-    path = ~/.config/hypr/assets/wallpapers/emerald.jpg
+    path = ~/.config/hypr/assets/wallpapers/obsidian.png
 }
  splash = false
+ #cringe text overlays dead

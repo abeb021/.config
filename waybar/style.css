@@ -6,7 +6,8 @@
 }
 
 #waybar {
-  background-color: alpha(@bg, 0);
+  /*made no background*/
+  background-color: alpha(@surface, 1);
   color: @fg;
   border: solid alpha(@surface, 0.8);
   padding: 0;

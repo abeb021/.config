@@ -1,6 +1,7 @@
 {
   "position": "top",
   //"height": 20,
+  //"layer": "overlay",
   "include": [
     "~/.config/waybar/modules/clock.jsonc",
     "~/.config/waybar/modules/tray.jsonc",
@@ -35,7 +36,7 @@
     "backlight",
     "custom/wifi",
     //"bluetooth",
-    "custom/eww",
+    //"custom/eww",
     "custom/theme",
     "battery"
   ]
