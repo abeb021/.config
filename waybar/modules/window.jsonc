@@ -1,7 +1,30 @@
 {
-  "hyprland/window": {
-    "format": "{}",
-    "separate-outputs": true,
-    "max-length": 32
+"hyprland/window": {
+    "format": "{title} - {class}",
+    "max-length": 35,
+    "rewrite": {
+      " - ": "", // if no window is focused, a single dash is displayed, this removes it
+      "(.*?) - Chromium - chromium": "   $1 ",
+      "(.*chrome)...(.*)": "   $1 ",
+      "(.*) - Obsidian - .* - obsidian": "   $1 ",
+      "(.*nvim)...(.*)": "   $2 ",
+      "(.*code)...(.*)": " 󰨞  $0",
+      "^.*btop( .*|$)": " 󰧨 BTOP $1 ",
+      "^.*unimatrix( .*|$)": " 󰘨 MATRIX $1 ",
+      "(.*) - Spotify": "  $1 ",
+      "(.*) - com.mitchellh.ghostty": " 󰊠 $1 ",
+      "(.*) - Alacritty": "   $1 ",
+      //"(.*) - kitty": "   $1 ",
+      "(.*) - kitty": "   $1 ",
+      "(.*) - BeeperTexts": " 󰻞  $1 ",
+      "(.*Discord)...(.*).. (.*)": "   $2 ",
+      "(.*) - org.gnome.Nautilus": " 󰉓  $1 ",
+      "(.*) - fish": "   [$1] ",
+      "(.*Steam)...(.*)": "   $1",
+      "(.*imv)...(.*).. (.*)": "   $2",
+      "(.*) - com.obsproject.Studio": "  $1 ",
+      "(.*Zen)" : " 󰺕 $1",
+      "(.*VPN) - (.*)" : "󱞐 $1 󰌆"
+    }
   }
 }
