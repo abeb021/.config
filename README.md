@@ -21,32 +21,30 @@
    
 ***
 ### Waybar (Status Bar)
-- Modular configuration with multiple modules
-- Hardware monitoring (CPU, RAM, battery)
-- Audio controls (volume, media player)
-- Network status (WiFi, Bluetooth)
-- Workspace indicators
-- Clock and language selector
-- Theme indicator
-- Notification counter
+- Modular configuration with JSONC modules
+- Hardware monitoring (CPU, RAM) — click opens btop
+- Audio controls (volume, media player via mpris)
+- WiFi status and network manager (nmtui)
+- Workspace indicators, clock, language selector
+- Theme switcher module
+- Notification counter (swaync)
+- System tray and battery/backlight modules
 
 ![waybar](assets/waybar.png)
 ***
 
 ### Wofi (Application Launcher)
-- Multiple style variants
-- Theme-aware styling
-- Application launcher with icons
-- Clipboard history integration
+- Theme-aware styling synced with the active dotfile theme
+- Application launcher (`SUPER + A`)
+- Clipboard history picker (`SUPER + V`)
 
 ![wofi](assets/wofi.png)
 ***
 
 ### SwayNC (Notification Center)
 - Notification daemon
-- Media player controls
 - Do not disturb mode
-- Calendar integration
+- Styled to match the obsidian palette (not switched by the theme menu)
 
 ![swaync](assets/swaync.png)
 ***
@@ -56,48 +54,61 @@
 <details>
 <summary>Available themes</summary>
    
-**Dark Themes:**
+**Dark Themes (via waybar theme module or `theme-switcher.sh`):**
 - Deep Blue
 - Emerald
 - Fiery Sunset
 - Golden Amber
-- Monochrome
+- Gray
+- Monochrome (strict black and white)
 - Obsidian
 - Rose Pink
 
-**Light Themes:**
+**Light Themes (legacy — present on disk, not fully compatible with current config schema):**
 - Macchiato
 - Mocha
 
 </details>
 
-Themes can be changed via the theme switcher script or through waybar's theme module. All components (waybar, wofi, kitty, hyprland, hyprlock, hyprpaper) are automatically updated when switching themes.
+Themes can be changed via the waybar theme module or:
+
+```bash
+~/.config/waybar/scripts/theme-switcher.sh <theme-name>
+```
+
+Switching updates **waybar, wofi, kitty, hyprland, hyprlock, and hyprpaper**. SwayNC is not part of the theme switcher.
 
 ![themes](assets/themes.png)
 ***
 
 ### Hyprlock (Lockscreen)
-- Multiple theme variants matching the main theme
-- Customizable appearance
-- Screen lock integration with hypridle
+- Theme variants matching dark dotfile themes
+- Integrated with hypridle for idle locking
+- Triggered with `SUPER + L` or `SUPER + P`
 
 ![lockscreen](assets/lockscreen.png)
 ***
 
+### Hypridle / Hyprsunset
+- **hypridle** — dims screen, locks session, turns off display, suspend/hibernate on idle
+- **hyprsunset** — blue-light filter with time-based profiles
+
+***
+
 ### Clipboard Manager (cliphist)
 - Integrated with wofi
-- Stores both text and images
-- Accessible via `SUPER + V`
-- Clear history with `SUPER + SHIFT + V`
+- Stores both text and images (via wl-paste watchers in autostart)
+- Open history: `SUPER + V`
+- Clear history: `SUPER + SHIFT + V`
 
 ![clipboard](assets/clipboard.png)
 ***
 
 ### Screenshot (hyprshot)
-- Region selection (Print)
-- Active window (Alt + Print)
-- Full screen (SUPER + Print)
-- Saves to ~/Pictures/Screenshots
+- Region selection (`Print`)
+- Active window (`Alt + Print`)
+- Focused window (`SUPER + Print`)
+- Saves to `~/Pictures/Screenshots`
 
 ***
       
@@ -107,47 +118,60 @@ Themes can be changed via the theme switcher script or through waybar's theme mo
 <summary><b>Install</b></summary>
 
 ***
-#### Requires Hyprland (Wayland compositor)
-#### Install dependencies
+#### Requires Arch Linux and Hyprland
 
-1. ##### In Arch Linux:
-   ```bash
-   $ sudo pacman -S hyprland waybar hyprpaper hypridle hyprlock hyprsunset kitty wofi swaync playerctl brightnessctl ttf-jetbrains-mono-nerd ttf-font-awesome noto-fonts noto-fonts-emoji jq networkmanager wireplumber pipewire pipewire-pulse pipewire-alsa cliphist hyprshot yazi
-   $ fc-cache -f -v
-   ```
+**Recommended:** run the setup script from this repository (installs packages, enables PipeWire, creates directories):
 
-   Or use the provided setup script:
-   ```bash
-   $ chmod +x setup.sh
-   $ ./setup.sh
-   ```
-
-2. ##### Additional dependencies (if not installed via setup.sh):
-   - `cliphist` - Clipboard manager
-   - `hyprshot` - Screenshot tool
-   - `yazi` - File manager (terminal-based)
-
-#### Install dotfiles
 ```bash
-$ git clone <your-repo-url>
-$ cd dotfiles
-$ cp -r hypr waybar wofi swaync kitty ~/.config/
+git clone <your-repo-url> ~/.config
+cd ~/.config
+chmod +x setup.sh
+./setup.sh
 ```
 
-##### Post-installation:
+The script installs the Hyprland stack, waybar, wofi, kitty, swaync, clipboard/screenshot tools, PipeWire, portals, fonts, and desktop integration packages. See `setup.sh` for the full package list.
+
+**Manual install (Arch):**
+
+```bash
+sudo pacman -S hyprland waybar hyprpaper hypridle hyprlock hyprsunset \
+  kitty wofi swaync libnotify wl-clipboard cliphist hyprshot grim slurp \
+  pipewire pipewire-pulse wireplumber pulsemixer playerctl brightnessctl \
+  polkit-gnome yazi networkmanager wireless_tools iw \
+  dracula-gtk-theme qt6ct xdg-desktop-portal xdg-desktop-portal-hyprland \
+  xdg-desktop-portal-gtk gsettings-desktop-schemas \
+  ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols ttf-font-awesome \
+  noto-fonts noto-fonts-emoji jq git
+fc-cache -f -v
+```
+
+Enable audio services:
+
+```bash
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
+```
+
+##### Post-installation
+
 1. Make scripts executable:
    ```bash
-   $ chmod +x ~/.config/waybar/scripts/*.sh
-   $ chmod +x ~/.config/hypr/hyprland/scripts/*.sh
+   chmod +x ~/.config/waybar/scripts/*.sh
+   chmod +x ~/.config/hypr/hyprland/scripts/*.sh
    ```
 
 2. Configure monitors in `~/.config/hypr/monitors.conf`
 
-3. Set up wallpapers (themes include matching wallpapers in `hypr/assets/wallpapers/`)
+3. Set wallpapers in `~/.config/hypr/hyprpaper.conf` (matching images in `hypr/assets/wallpapers/`)
 
-4. Start Hyprland:
+4. Adjust machine-specific values if needed:
+   - WiFi interface in `waybar/scripts/wifi.sh`
+   - Backlight device in binds and waybar backlight module
+   - Bluetooth device in `hypr/hyprland/scripts/bluetooth.sh`
+   - Keyboard layout device in `waybar/modules/language.jsonc`
+
+5. Start Hyprland:
    ```bash
-   $ Hyprland
+   Hyprland
    ```
 
 ***
@@ -159,29 +183,29 @@ $ cp -r hypr waybar wofi swaync kitty ~/.config/
 ***
 | Keybinding            | Description                              |
 | --------------------- | ---------------------------------------- |
-| `SUPER + SHIFT + R`   | Reload Hyprland config                   |
+| `SUPER + SHIFT + R`   | Reload Hyprland config and restart waybar, hyprpaper, hyprsunset |
 | `SUPER + Q`           | Open terminal (kitty)                    |
 | `SUPER + E`           | Open file manager (yazi)                 |
 | `SUPER + A`           | Open app launcher (wofi)                 |
 | `Print`               | Screenshot (region selection)            |
 | `Alt + Print`         | Screenshot active window                 |
-| `SUPER + Print`       | Screenshot full screen                   |
+| `SUPER + Print`       | Screenshot focused window                |
 | `SUPER + V`           | Open clipboard manager                   |
 | `SUPER + SHIFT + V`   | Clear clipboard history                  |
-| `SUPER + L`           | Lock screen                              |
-| `SUPER + P`           | Logout                                   |
-| `SUPER + O`           | Exit Hyprland                            |
+| `SUPER + L`           | Lock screen (hyprlock)                   |
+| `SUPER + P`           | Lock screen (hyprlock)                   |
+| `SUPER + O`           | Exit Hyprland session                    |
 | `SUPER + R`           | Toggle floating mode                     |
 | `SUPER + G`           | Toggle group                             |
 | `SUPER + F`           | Fullscreen (pin)                         |
 | `SUPER + F11`         | Fullscreen                               |
 | `SUPER + C`           | Close focused window                     |
-| `SUPER + B`           | Bluetooth toggle script                  |
+| `SUPER + B`           | Bluetooth toggle script (paired device)  |
 | `XF86AudioPlay`       | Play/pause media                         |
 | `XF86AudioNext`       | Next track                               |
 | `XF86AudioPrev`       | Previous track                           |
-| `XF86AudioRaiseVolume`| Increase volume                          |
-| `XF86AudioLowerVolume`| Decrease volume                          |
+| `XF86AudioRaiseVolume`| Increase volume (wpctl)                  |
+| `XF86AudioLowerVolume`| Decrease volume (wpctl)                  |
 | `XF86AudioMute`       | Toggle mute                              |
 | `XF86MonBrightnessUp` | Increase brightness                      |
 | `XF86MonBrightnessDown`| Decrease brightness                     |
@@ -193,21 +217,10 @@ $ cp -r hypr waybar wofi swaync kitty ~/.config/
 | `SUPER + 1-9,0`                                      | Switch workspace              |
 | `SUPER + SHIFT + 1-9,0`                              | Move window to workspace      |
 | `SUPER + Tab`                                        | Cycle next window             |
-| `ALT + Tab`                                          | Change active group            |
+| `ALT + Tab`                                          | Change active group           |
 | `SUPER + Mouse Left`                                 | Move window                   |
 | `SUPER + Mouse Right`                                | Resize window                 |
 
-***
-
-</details>
-<details>
-<summary><b>Mousebinding</b></summary>
-   
-***
-| Mousebinding           | Description        |
-| ---------------------- | -------------------|
-| `SUPER + Left button`  | Move window        |
-| `SUPER + Right button` | Resize window      |
 ***
 
 </details>
@@ -216,34 +229,23 @@ $ cp -r hypr waybar wofi swaync kitty ~/.config/
 <summary><b>Configuration Structure</b></summary>
 
 ***
-### Tracked Directories:
-- `hypr/` - Hyprland configuration (compositor, lockscreen, wallpapers)
-- `waybar/` - Status bar configuration and themes
-- `wofi/` - Application launcher configuration and themes
-- `swaync/` - Notification center configuration
-- `kitty/` - Terminal configuration and themes
+### Tracked Directories
+- `hypr/` — Hyprland, hyprlock, hypridle, hyprpaper, hyprsunset, wallpapers
+- `waybar/` — Status bar configuration, modules, and themes
+- `wofi/` — Application launcher configuration and themes
+- `swaync/` — Notification center configuration
+- `kitty/` — Terminal configuration and themes
 
-### Key Files:
-- `hypr/hyprland.conf` - Main Hyprland config (sources other configs)
-- `hypr/hyprland/binds.conf` - Keybindings
-- `waybar/config` - Waybar main configuration
-- `waybar/scripts/theme-switcher.sh` - Theme switching script
-- `setup.sh` - Installation script (optional)
+### Key Files
+- `hypr/hyprland.conf` — Main Hyprland config (sources modular configs)
+- `hypr/hyprland/binds.conf` — Keybindings
+- `hypr/hyprland/autostart.conf` — Startup services
+- `waybar/config` — Waybar main configuration
+- `waybar/scripts/theme-switcher.sh` — Theme switching script
+- `setup.sh` — Arch Linux installation script
 
 ***
 
-</details>
-
-<details>
-<summary><b>TODO</b></summary>
-   
-***
-- Add more theme variants
-- Improve documentation
-- Optimize configuration files
-- Add more widget options
-***
-   
 </details>
 
 ***
