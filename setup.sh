@@ -12,6 +12,8 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Function to print colored output
 print_status() {
     echo -e "${BLUE}[INFO]${NC} $1"
@@ -76,8 +78,7 @@ update_system() {
 # Function to install essential packages
 install_packages() {
     print_status "Installing essential packages..."
-    
-    # Core packages
+
     local packages=(
         # Hyprland ecosystem
         "hyprland"
@@ -86,34 +87,54 @@ install_packages() {
         "hypridle"
         "hyprlock"
         "hyprsunset"
-        
+
         # Terminal and launcher
         "kitty"
         "wofi"
-        
+
         # Notifications
         "swaync"
-        
+        "libnotify"
+
+        # Clipboard and screenshots
+        "wl-clipboard"
+        "cliphist"
+        "hyprshot"
+        "grim"
+        "slurp"
+
         # Audio and media
+        "pipewire"
+        "pipewire-pulse"
+        "wireplumber"
         "pulsemixer"
         "playerctl"
-        
+
         # System utilities
         "brightnessctl"
-        
+        "polkit-gnome"
+        "yazi"
+
         # VPN
         "amneziavpn"
-        
+
+        # Desktop integration and theming
+        "dracula-gtk-theme"
+        "qt6ct"
+        "xdg-desktop-portal"
+        "xdg-desktop-portal-hyprland"
+        "xdg-desktop-portal-gtk"
+        "gsettings-desktop-schemas"
+
         # Essential fonts
         "ttf-jetbrains-mono-nerd"
+        "ttf-nerd-fonts-symbols"
         "ttf-font-awesome"
         "noto-fonts"
         "noto-fonts-emoji"
-        
+
         # Additional dependencies
         "jq"
-        "pulseaudio"
-        "pulseaudio-alsa"
         "networkmanager"
         "wireless_tools"
         "iw"
@@ -122,8 +143,7 @@ install_packages() {
         "git"
         "base-devel"
     )
-    
-    # Install packages
+
     for package in "${packages[@]}"; do
         print_status "Installing $package..."
         if yay -S --noconfirm "$package" 2>/dev/null; then
@@ -142,13 +162,14 @@ install_packages() {
 # Function to check font installation
 check_fonts() {
     print_status "Checking font installation..."
-    
+
     local fonts=(
         "JetBrains Mono Nerd Font"
+        "Symbols Nerd Font"
         "Font Awesome"
         "Noto Sans"
     )
-    
+
     for font in "${fonts[@]}"; do
         if fc-list | grep -i "$font" > /dev/null; then
             print_success "Font '$font' is available"
@@ -161,31 +182,34 @@ check_fonts() {
 # Function to enable services
 enable_services() {
     print_status "Enabling system services..."
-    
-    # Enable NetworkManager
+
     sudo systemctl enable NetworkManager
     sudo systemctl start NetworkManager
     print_success "NetworkManager enabled"
-    
-    # Enable PulseAudio
-    systemctl --user enable pulseaudio
-    systemctl --user start pulseaudio
-    print_success "PulseAudio enabled for user"
+
+    systemctl --user enable pipewire
+    systemctl --user enable pipewire-pulse
+    systemctl --user enable wireplumber
+    systemctl --user start pipewire
+    systemctl --user start pipewire-pulse
+    systemctl --user start wireplumber
+    print_success "PipeWire and WirePlumber enabled for user"
 }
 
 # Function to create necessary directories
 create_directories() {
     print_status "Creating necessary directories..."
-    
+
     local dirs=(
         "$HOME/.config/hypr"
+        "$HOME/.config/hypr/assets/wallpapers"
         "$HOME/.config/waybar"
         "$HOME/.config/kitty"
         "$HOME/.config/wofi"
         "$HOME/.config/swaync"
         "$HOME/Pictures/Screenshots"
     )
-    
+
     for dir in "${dirs[@]}"; do
         mkdir -p "$dir"
         print_success "Created directory: $dir"
@@ -195,22 +219,54 @@ create_directories() {
 # Function to set up configuration files
 setup_configs() {
     print_status "Setting up configuration files..."
-    
-    # Check if configs already exist
-    if [[ -d "$HOME/.config/hypr" && -f "$HOME/.config/hypr/hyprland.conf" ]]; then
-        print_warning "Configuration files already exist. Skipping config setup."
-        print_status "To update configs, please backup your current configs and run this script again."
+
+    if [[ -f "$HOME/.config/hypr/hyprland.conf" ]]; then
+        print_success "Configuration files already present in ~/.config"
         return
     fi
-    
-    print_status "Configuration files will be set up from your dotfiles repository"
-    print_warning "Please ensure your dotfiles are properly cloned and configured"
+
+    local config_dirs=(hypr waybar wofi kitty swaync)
+    local has_source=false
+
+    for dir in "${config_dirs[@]}"; do
+        if [[ -d "$SCRIPT_DIR/$dir" ]]; then
+            has_source=true
+            break
+        fi
+    done
+
+    if [[ "$has_source" == false ]]; then
+        print_error "No configuration source found next to setup.sh"
+        print_status "Clone this dotfiles repository into ~/.config and run the script again"
+        return 1
+    fi
+
+    mkdir -p "$HOME/.config"
+
+    for dir in "${config_dirs[@]}"; do
+        if [[ -d "$SCRIPT_DIR/$dir" ]]; then
+            if [[ "$SCRIPT_DIR" == "$HOME/.config" ]]; then
+                print_warning "Expected configs in ~/.config/$dir but hyprland.conf is missing"
+            else
+                print_status "Linking $dir into ~/.config"
+                ln -sfn "$SCRIPT_DIR/$dir" "$HOME/.config/$dir"
+                print_success "Linked $dir"
+            fi
+        fi
+    done
+
+    if [[ -f "$HOME/.config/hypr/hyprland.conf" ]]; then
+        print_success "Configuration files are ready in ~/.config"
+    else
+        print_error "Configuration setup incomplete — ensure this repo is cloned to ~/.config"
+        return 1
+    fi
 }
 
 # Function to check if applications are working
 test_applications() {
     print_status "Testing installed applications..."
-    
+
     local apps=(
         "hyprland"
         "waybar"
@@ -221,12 +277,22 @@ test_applications() {
         "hypridle"
         "hyprlock"
         "hyprsunset"
+        "hyprshot"
+        "grim"
+        "slurp"
+        "cliphist"
+        "wl-copy"
+        "wl-paste"
+        "yazi"
         "pulsemixer"
         "playerctl"
         "brightnessctl"
+        "wpctl"
+        "gsettings"
+        "notify-send"
         "amneziavpn"
     )
-    
+
     for app in "${apps[@]}"; do
         if command -v "$app" &> /dev/null; then
             print_success "$app is available"
@@ -241,7 +307,7 @@ post_install_info() {
     print_success "Installation completed!"
     echo
     print_status "Post-installation steps:"
-    echo "1. Copy your configuration files to ~/.config/"
+    echo "1. Ensure configuration files are in ~/.config/"
     echo "2. Set up your wallpaper in ~/.config/hypr/hyprpaper.conf"
     echo "3. Configure your monitors in ~/.config/hypr/monitors.conf"
     echo "4. Add your user to the video group: sudo usermod -a -G video $USER"
@@ -262,13 +328,11 @@ main() {
     echo "Arch Linux Hyprland Setup Script"
     echo "=========================================="
     echo
-    
-    # Pre-flight checks
+
     check_root
     check_arch
     check_yay
-    
-    # Installation steps
+
     update_system
     install_packages
     check_fonts
@@ -276,12 +340,10 @@ main() {
     create_directories
     setup_configs
     test_applications
-    
-    # Post-installation
+
     post_install_info
-    
+
     print_success "Setup completed successfully!"
 }
 
-# Run main function
 main "$@"
