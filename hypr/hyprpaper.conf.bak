@@ -1,7 +1,7 @@
-preload = ~/.config/hypr/assets/wallpapers/deepblue.jpg
+preload = ~/.config/hypr/assets/wallpapers/monochrome.png
 wallpaper {
     monitor = eDP-1
-    path = ~/.config/hypr/assets/wallpapers/deepblue.jpg
+    path = ~/.config/hypr/assets/wallpapers/monochrome.png
 }
  splash = false
  #cringe text overlays dead
