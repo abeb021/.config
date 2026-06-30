@@ -24,6 +24,8 @@ format_theme_name() {
         fierysunset) echo "Fiery Sunset" ;;
         goldenamber) echo "Golden Amber" ;;
         rosepink) echo "Rose Pink" ;;
+        gray) echo "Gray" ;;
+        monochrome) echo "Monochrome" ;;
         *)
             # For unknown themes: capitalize first letter and add space before capitals
             echo "$theme" | sed 's/^\(.\)/\U\1/' | sed 's/\([a-z]\)\([A-Z]\)/\1 \2/g'
