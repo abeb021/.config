@@ -1,9 +1,0 @@
-{
-	"custom/eww": {
-		"format": "",
-		"tooltip": "Open control panel (left click: control, right: close all)",
-		"on-click": "/home/abeb-arch/.config/eww/scripts/usrctl.sh",
-		"on-click-right": "/usr/bin/eww close-all",
-		"interval": 0
-	}
-}

@@ -8,7 +8,6 @@
 !hypr/
 !swaync/
 !kitty/
-!eww/
 
 # Include files inside ignored directories
 !waybar/**/*
@@ -16,6 +15,5 @@
 !hypr/**/*
 !swaync/**/*
 !kitty/**/*
-!eww/**/*
 
 !setup.sh
