@@ -1,9 +1,9 @@
 @define-color accent #f59e0b;       /* Amber/gold */
 @define-color accent-hover #fbbf24; /* Lighter amber */
-@define-color critical #dc2626;     /* Error/critical (deep red) */
-@define-color warning #eab308;      /* Warning/yellow */
+@define-color critical #ef4444;     /* Error/critical */
+@define-color warning #eab308;      /* Warning */
 @define-color info #3b82f6;         /* Info/blue */
-@define-color good #16a34a;         /* Success/green */
+@define-color good #7bc379;         /* Success */
 
 @define-color fg #d4d4d4;           /* Default text */
 @define-color fg-sub #9ca3af;       /* Subtext */

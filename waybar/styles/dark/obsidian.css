@@ -1,10 +1,10 @@
 @define-color accent #8b5cf6;       /* Main accent (calm indigo/blue) */
 
 @define-color accent-hover #a5b4fc; /* Lighter accent on hover */
-@define-color critical #ff6b6b;     /* Error/critical (soft red) */
-@define-color warning #f2c97d;      /* Warning (amber) */
+@define-color critical #ef4444;     /* Error/critical */
+@define-color warning #eab308;      /* Warning */
 @define-color info #5db7f5;         /* Info/blue */
-@define-color good #7bc379;         /* Success/green */
+@define-color good #7bc379;         /* Success */
 
 @define-color fg #d4d4d4;           /* Default text (slightly softer than pure white) */
 @define-color fg-sub #9ca3af;       /* Subtext (muted gray) */

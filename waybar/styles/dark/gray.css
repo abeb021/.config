@@ -1,9 +1,9 @@
 @define-color accent #94a3b8;       /* Cool gray accent */
 @define-color accent-hover #cbd5e1; /* Lighter gray */
-@define-color critical #ef4444;     /* Error/critical (kept red for visibility) */
-@define-color warning #eab308;      /* Warning (kept yellow for visibility) */
+@define-color critical #ef4444;     /* Error/critical */
+@define-color warning #eab308;      /* Warning */
 @define-color info #6b7280;         /* Info/gray */
-@define-color good #22c55e;         /* Success (kept green for visibility) */
+@define-color good #7bc379;         /* Success */
 
 @define-color fg #d4d4d4;           /* Default text */
 @define-color fg-sub #9ca3af;       /* Subtext */

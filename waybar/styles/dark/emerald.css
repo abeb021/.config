@@ -1,9 +1,9 @@
 @define-color accent #10b981;       /* Emerald green */
 @define-color accent-hover #34d399; /* Lighter emerald */
-@define-color critical #f87171;     /* Error/critical (soft red) */
-@define-color warning #fbbf24;      /* Warning (amber) */
+@define-color critical #ef4444;     /* Error/critical */
+@define-color warning #eab308;      /* Warning */
 @define-color info #38bdf8;         /* Info/blue */
-@define-color good #22c55e;         /* Success/bright green */
+@define-color good #7bc379;         /* Success/bright green */
 
 @define-color fg #d4d4d4;           /* Default text */
 @define-color fg-sub #9ca3af;       /* Subtext */

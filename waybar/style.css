@@ -1,4 +1,4 @@
-@import "styles/dark/obsidian.css";
+@import "styles/dark/monochrome.css";
 
 * {
   font-family: Symbols Nerd Font, JetBrainsMono;
@@ -37,7 +37,7 @@
   box-shadow: inset 0 0 0 2px @accent;
 }
 
-/* Battery full state (90% or below) */
+/* Battery full state (70% or above) */
 #battery.full {
   color: @good;
 }
@@ -118,16 +118,15 @@
 #pulseaudio.muted { color: @critical; }
 #pulseaudio.muted:hover { background-color: alpha(@critical, 0.3); }
 
-/* Hardware */
-#memory, #cpu { color: @fg; }
-#memory.20, #cpu.20 { color: @good; }
+/* Hardware — green = low, yellow = medium, red = high */
+#memory, #cpu { color: @good; }
 #memory.40, #cpu.40 { color: @warning; }
-#memory.60, #cpu.60 { color: @accent; }
+#memory.60, #cpu.60 { color: @warning; }
 #memory.80, #cpu.80 { color: @critical; }
 #memory.100, #cpu.100 { color: @critical; }
-#memory.20:hover, #cpu.20:hover { background-color: alpha(@good, 0.3); }
+#memory:hover, #cpu:hover { background-color: alpha(@good, 0.3); }
 #memory.40:hover, #cpu.40:hover { background-color: alpha(@warning, 0.3); }
-#memory.60:hover, #cpu.60:hover { background-color: alpha(@accent, 0.3); }
+#memory.60:hover, #cpu.60:hover { background-color: alpha(@warning, 0.3); }
 #memory.80:hover, #cpu.80:hover { background-color: alpha(@critical, 0.3); }
 #memory.100:hover, #cpu.100:hover { background-color: alpha(@critical, 0.3); }
 

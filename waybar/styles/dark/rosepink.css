@@ -1,9 +1,9 @@
 @define-color accent #ec4899;       /* Pink */
 @define-color accent-hover #f472b6; /* Lighter pink */
-@define-color critical #dc2626;     /* Error/critical (red) */
-@define-color warning #f59e0b;      /* Warning/amber */
+@define-color critical #ef4444;     /* Error/critical */
+@define-color warning #eab308;      /* Warning */
 @define-color info #3b82f6;         /* Info/blue */
-@define-color good #22c55e;         /* Success/green */
+@define-color good #7bc379;         /* Success/green */
 
 @define-color fg #d4d4d4;           /* Default text */
 @define-color fg-sub #9ca3af;       /* Subtext */
