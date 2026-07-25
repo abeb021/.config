@@ -1,12 +1,12 @@
-@define-color accent #ffffff;       /* Pure white accent (SDDM-style borders) */
-@define-color accent-hover #aaaaaa;  /* Muted white on hover */
-@define-color critical #ffffff;     /* Strict B&W — bright white for alerts */
-@define-color warning #aaaaaa;      /* Mid gray for warnings */
-@define-color info #888888;         /* Gray for info */
-@define-color good #cccccc;          /* Light gray for success */
+@define-color accent #e0e0e0;       /* Light gray accent */
+@define-color accent-hover #f0f0f0; /* Lighter gray on hover */
+@define-color critical #f0f0f0;     /* Bright gray for alerts */
+@define-color warning #b0b0b0;      /* Mid gray for warnings */
+@define-color info #808080;         /* Muted gray for info */
+@define-color good #d0d0d0;         /* Light gray for success */
 
-@define-color fg #ffffff;           /* Primary text */
-@define-color fg-sub #aaaaaa;       /* Secondary labels (SDDM-style) */
-@define-color bg #000000;           /* Pure black background */
-@define-color surface #1a1a1a;      /* Module/surface background */
-@define-color surface-hover #333333;/* Hover highlight (SDDM dropdown) */
+@define-color fg #d4d4d4;           /* Default text */
+@define-color fg-sub #9ca3af;       /* Subtext */
+@define-color bg #1b1b1f;           /* Base background */
+@define-color surface #252525;      /* Module background */
+@define-color surface-hover #2e2e36;/* Module hover */
