@@ -220,7 +220,7 @@ create_directories() {
 setup_configs() {
     print_status "Setting up configuration files..."
 
-    if [[ -f "$HOME/.config/hypr/hyprland.conf" ]]; then
+    if [[ -f "$HOME/.config/hypr/hyprland.lua" ]] || [[ -f "$HOME/.config/hypr/hyprland.conf" ]]; then
         print_success "Configuration files already present in ~/.config"
         return
     fi
@@ -246,7 +246,7 @@ setup_configs() {
     for dir in "${config_dirs[@]}"; do
         if [[ -d "$SCRIPT_DIR/$dir" ]]; then
             if [[ "$SCRIPT_DIR" == "$HOME/.config" ]]; then
-                print_warning "Expected configs in ~/.config/$dir but hyprland.conf is missing"
+                print_warning "Expected configs in ~/.config/$dir but hyprland.lua is missing"
             else
                 print_status "Linking $dir into ~/.config"
                 ln -sfn "$SCRIPT_DIR/$dir" "$HOME/.config/$dir"
@@ -255,7 +255,7 @@ setup_configs() {
         fi
     done
 
-    if [[ -f "$HOME/.config/hypr/hyprland.conf" ]]; then
+    if [[ -f "$HOME/.config/hypr/hyprland.lua" ]] || [[ -f "$HOME/.config/hypr/hyprland.conf" ]]; then
         print_success "Configuration files are ready in ~/.config"
     else
         print_error "Configuration setup incomplete — ensure this repo is cloned to ~/.config"
@@ -309,7 +309,7 @@ post_install_info() {
     print_status "Post-installation steps:"
     echo "1. Ensure configuration files are in ~/.config/"
     echo "2. Set up your wallpaper in ~/.config/hypr/hyprpaper.conf"
-    echo "3. Configure your monitors in ~/.config/hypr/monitors.conf"
+    echo "3. Configure your monitors in ~/.config/hypr/monitors.lua"
     echo "4. Add your user to the video group: sudo usermod -a -G video $USER"
     echo "5. Reboot or start Hyprland with: Hyprland"
     echo

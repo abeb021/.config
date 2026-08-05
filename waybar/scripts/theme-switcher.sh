@@ -54,10 +54,12 @@ update_kitty() {
 
 # Function to update hyprland theme
 update_hyprland() {
-    local hyprland_conf="$CONFIG_DIR/hypr/hyprland.conf"
-    if [ -f "$hyprland_conf" ]; then
-        sed -i "s|source = ~/.config/hypr/hyprland/themes/[^/]*/[^\"]*\.conf|source = ~/.config/hypr/hyprland/themes/$THEME_CATEGORY/$THEME_NAME.conf|" "$hyprland_conf"
-        echo "✓ Updated hyprland theme to $THEME_NAME"
+    local active_theme_lua="$CONFIG_DIR/hypr/hyprland/active_theme.lua"
+    if [ -f "$active_theme_lua" ]; then
+        sed -i "s|return \"hyprland.themes\.[^\"]*\"|return \"hyprland.themes.$THEME_CATEGORY.$THEME_NAME\"|" "$active_theme_lua"
+        echo "✓ Updated hyprland active theme to $THEME_NAME"
+    else
+        echo "⚠ Warning: $active_theme_lua not found"
     fi
 }
 
